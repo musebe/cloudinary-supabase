@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
 
-module.exports = nextConfig
+module.exports = {
+  images: {
+    reactStrictMode: true,
+    domains: ['res.cloudinary.com'],
+  },
+  target: 'serverless',
+};
