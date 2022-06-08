@@ -1,19 +1,19 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-function cn(...classes: string[]) {
+function cn(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-const BlurImage = () => {
+const BlurImage = ({ img }) => {
   const [isLoading, setLoading] = useState(true);
 
   return (
-    <a href='#' className='group'>
-      <div className='w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8'>
+    <a href={img.href} className='group'>
+      <div className='aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8'>
         <Image
           alt=''
-          src='https://res.cloudinary.com/hackit-africa/image/upload/v1580219806/me.jpg'
+          src={img.imageSrc}
           layout='fill'
           objectFit='cover'
           className={cn(
@@ -25,11 +25,10 @@ const BlurImage = () => {
           onLoadingComplete={() => setLoading(false)}
         />
       </div>
-      <h3 className='mt-4 text-sm text-gray-700'>Eugene Musebe</h3>
-      <p className='mt-1 text-lg font-medium text-gray-900'>@_Musebe</p>
+      <h3 className='mt-4 text-sm text-gray-700 text-center'>{img.name}</h3>
+      <p className='mt-1 text-lg font-medium text-gray-900 text-center'>{img.username}</p>
     </a>
   );
 };
 
 export default BlurImage;
-
